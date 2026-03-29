@@ -1,0 +1,27 @@
+@import 'tailwindcss';
+
+html {
+  font-family: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto,
+    sans-serif;
+}
+
+body {
+  margin: 0;
+  min-height: 100svh;
+}
+
+#root {
+  min-height: 100svh;
+}
+
+@keyframes route-line-flow {
+  to {
+    stroke-dashoffset: -12;
+  }
+}
+
+.route-line-anim {
+  stroke-dasharray: 2 3.5;
+  stroke-dashoffset: 0;
+  animation: route-line-flow 2.2s linear infinite;
+}
