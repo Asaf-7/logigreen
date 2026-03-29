@@ -1,73 +1,47 @@
-# React + TypeScript + Vite
+# 🚛 LogiGreen - Yeşil Lojistik ve Rota Optimizasyon Sistemi
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**LogiGreen**, tedarik zinciri ve lojistik operasyonlarında **Saf Lojistik Maliyeti** ile **Karbon Emisyonu Bedeli (Karbon Vergisi)** arasındaki dengeyi kuran dinamik bir Karar Destek Sistemidir (Decision Support System).
 
-Currently, two official plugins are available:
+Avrupa Birliği Sınırda Karbon Düzenleme Mekanizması (CBAM) ve Kapsam 3 emisyon hedefleri doğrultusunda şirketlerin stratejik kararlar almasına yardımcı olmak için geliştirilmiştir.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+🚀 **Canlı Uygulama:** [https://logigreen.vercel.app/]
 
-## React Compiler
+## ✨ Temel Özellikler
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **Çok Kriterli Optimizasyon:** Kullanıcının belirlediği "Karbon Vergisi" senaryosuna göre anlık olarak en uygun taşıma modunu (Ağır Tır, Elektrikli Tren, Gemi) seçer.
+- **Dinamik Rota Görselleştirme:** "Soyut Düğüm Haritası" (Abstract Node Map) tasarımı ile algoritmanın seçtiği optimum aracı harita üzerinde animasyonlu olarak gösterir.
+- **Senaryo Analizi:** Karbon vergisi arttıkça veya yük tonajı değiştikçe kırılma noktalarını (trade-off) hesaplar ve anında bar grafiklere (Recharts) yansıtır.
+- **Kurumsal Dashboard:** "Glassmorphism" UI prensipleriyle tasarlanmış, yönetici özetine (Executive Summary) uygun temiz arayüz.
 
-## Expanding the ESLint configuration
+## 🧪 Matematiksel Model ve Algoritma
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+Sistem, karar mekanizması olarak aşağıdaki **Amaç Fonksiyonunu (Objective Function)** kullanarak toplam maliyeti minimize eder:
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+$Z = \text{Toplam Lojistik Maliyeti} + (\text{Toplam } CO_2 \text{ Emisyonu} \times \text{Karbon Vergisi})$
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+**Araç Parametreleri (Ödünleşim / Trade-off Modeli):**
+- **Ağır Tır:** Düşük taşıma maliyeti (10 TL/km) | Yüksek emisyon (150 g CO2/ton.km)
+- **Elektrikli Tren:** Ortalama taşıma maliyeti (25 TL/km) | Düşük emisyon (40 g CO2/ton.km)
+- **Gemi:** Yüksek taşıma maliyeti (45 TL/km - Liman masrafları dahil) | Minimum emisyon (20 g CO2/ton.km)
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+*Not: Vergi 0 TL iken sistem en ucuz olan Tır'ı seçerken, vergi yükü arttıkça optimum rota Tren veya Gemiye kaymaktadır.*
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 🛠️ Teknoloji Yığını
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+- **Frontend:** React.js, TypeScript, Vite
+- **Stil & Tasarım:** Tailwind CSS
+- **Veri Görselleştirme:** Recharts
+- **İkonografi:** Lucide React
+- **Dağıtım (Deployment):** Vercel
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## 🚀 Kurulum (Lokal Ortam)
+
+Projeyi bilgisayarınızda çalıştırmak için:
+
+1. Depoyu klonlayın: `git clone https://github.com/Asaf-7/logigreen.git`
+2. Klasöre gidin: `cd logigreen`
+3. Bağımlılıkları yükleyin: `npm install`
+4. Geliştirici sunucusunu başlatın: `npm run dev`
+
+---
+*Bu proje, disiplinlerarası (Kimya ve Matematik Mühendisliği) bir optimizasyon yaklaşımıyla Yıldız Teknik Üniversitesi öğrencisi Asaf Rüştü tarafından geliştirilmiştir.*
